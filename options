@@ -1,0 +1,4 @@
+
+
+#if you want to try to compile crosstools set to 0
+#PRECOMPILED_CROSSTOOLS=1
