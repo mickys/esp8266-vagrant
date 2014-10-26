@@ -22,6 +22,21 @@ Instructions
 * run `vagrant up` to get things started
 * run `vagrant ssh` to log on to the machine
 
+After you have logged in to the virtual machine do the following
+
+````bash
+#go to the right place
+cd /project/ESP8266_SDK/app
+
+#copy a sample to the app folder
+cp -R ../examples/IoT_Demo/* .
+
+#this will build everything
+#no need for running make first since 
+#it's one of the first things in the file
+./gen_misc.sh
+````
+
 
 
 Filesystem layout
@@ -29,4 +44,4 @@ Filesystem layout
 
 /opt/xtensa-lx106-elf		- compiler (on path)
 /project					- maps to the project folder you decided on
-/project/ESP8266_SDK		
+/project/ESP8266_SDK		- extracted SDK
