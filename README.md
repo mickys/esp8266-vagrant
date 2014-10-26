@@ -22,8 +22,11 @@ Instructions
 * run `vagrant up` to get things started
 * run `vagrant ssh` to log on to the machine
 
+
+
 Filesystem layout
 =================
 
 /opt/xtensa-lx106-elf		- compiler (on path)
 /project					- maps to the project folder you decided on
+/project/ESP8266_SDK		

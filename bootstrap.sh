@@ -15,6 +15,7 @@ if [ -f /vagrant/options ]; then
 	. /vagrant/options
 fi
 
+chmod +x /vagrant/scripts/*.sh
 
 #ubuntu basics
 export DEBIAN_FRONTEND=noninteractive
@@ -40,38 +41,30 @@ echo "prepping some folders"
 sudo mkdir -p $BASE_FOLDER 
 
 
-#download and extract the SDK
+#download and extract the SDK if missing
 if [ ! -d "$SDK_FOLDER" ]; then
-	echo "sdk"
-	if [ ! -f "$DOWNLOADS/esp_iot_sdk_v0.9.2_14_10_24.zip" ]; then
-		echo "download first"
-		wget -O $DOWNLOADS/esp_iot_sdk_v0.9.2_14_10_24.zip http://bbs.espressif.com/download/file.php?id=1
-		
-	fi
-	cd $BASE_FOLDER
-	unzip $DOWNLOADS/esp_iot_sdk_v0.9.2_14_10_24.zip
-	mv $BASE_FOLDER/esp_iot_sdk_v0.9.2 $SDK_FOLDER
+	/vagrant/scripts/sdk.sh
 fi
 
 
 #add some libraries
-if [ ! -f "$SDK_FOLDER/lib/libc.a" ]; then
-	echo "doing libs"
-	wget -O $SDK_FOLDER/lib/libc.a https://github.com/esp8266/esp8266-wiki/raw/master/libs/libc.a
-	wget -O $SDK_FOLDER/lib/libhal.a https://github.com/esp8266/esp8266-wiki/raw/master/libs/libhal.a
-fi
+# if [ ! -f "$SDK_FOLDER/lib/libc.a" ]; then
+# 	echo "doing libs"
+# 	wget -O $SDK_FOLDER/lib/libc.a https://github.com/esp8266/esp8266-wiki/raw/master/libs/libc.a
+# 	wget -O $SDK_FOLDER/lib/libhal.a https://github.com/esp8266/esp8266-wiki/raw/master/libs/libhal.a
+# fi
 
 
 #headers
-if [ ! -d "$BASE_FOLDER/include" ]; then
-	echo "headers"
-	if [ ! -f $DOWNLOADS/include.tgz ]; then
-		echo "download first"
-		wget -O $DOWNLOADS/include.tgz https://github.com/esp8266/esp8266-wiki/raw/master/include.tgz
-	fi
-	cd $BASE_FOLDER
-	tar -xvzf $DOWNLOADS/include.tgz
-fi
+# if [ ! -d "$BASE_FOLDER/include" ]; then
+# 	echo "headers"
+# 	if [ ! -f $DOWNLOADS/include.tgz ]; then
+# 		echo "download first"
+# 		wget -O $DOWNLOADS/include.tgz https://github.com/esp8266/esp8266-wiki/raw/master/include.tgz
+# 	fi
+# 	cd $BASE_FOLDER
+# 	tar -xvzf $DOWNLOADS/include.tgz
+# fi
 
 
 #compile or not compile?
