@@ -7,8 +7,9 @@ at http://bbs.espressif.com but more based on
 https://github.com/esp8266/esp8266-wiki/wiki/Toolchain
 
 You will need vagrant + virtualbox installed.
-It's not tested on anything but Linux at the moment
-but should work wherever vagrant can be installed
+It's not tested on anything but Linux and Windows 7 at the moment
+but should work wherever vagrant can be installed together with
+virtualbox.
 
 
 Instructions
