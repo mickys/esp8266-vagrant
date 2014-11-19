@@ -1,4 +1,12 @@
 
 
+
 #if you want to try to compile crosstools set to 0
-#PRECOMPILED_CROSSTOOLS=1
+PRECOMPILED_CROSSTOOLS=0
+
+#various paths
+BASE_FOLDER=/opt/Espressif/
+SDK_FOLDER=$BASE_FOLDER/ESP8266_SDK
+DOWNLOADS=/vagrant/downloads
+
+

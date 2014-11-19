@@ -6,7 +6,8 @@ VAGRANTFILE_API_VERSION = "2"
 
 HWVIRTEX=ENV['HWVIRTEX'] || "on"
 VAGRANTRAM=ENV['VAGRANTRAM'] || "1024"
-PROJECT=ENV['ESPPROJECT'] || "../project"
+VAGRANTCPUS=ENV['VAGRANTCPUS'] || 1
+PROJECT=ENV['ESPPROJECT'] || "./Espressif"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # All Vagrant configuration is done here. The most common configuration
@@ -43,7 +44,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
-  config.vm.synced_folder PROJECT, "/project"
+  config.vm.synced_folder PROJECT, "/opt/Espressif"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
@@ -55,6 +56,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #
   #   # Use VBoxManage to customize the VM. For example to change memory:
     vb.customize ["modifyvm", :id, "--hwvirtex", HWVIRTEX, "--memory", VAGRANTRAM]
+    # number of cpus cores
+    vb.customize ["modifyvm", :id, "--cpus", VAGRANTCPUS]
   end
   #
   # View the documentation for the provider you're using for more
