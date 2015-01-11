@@ -1,13 +1,14 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
-
+# 
+load 'project.conf'
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
 
 HWVIRTEX=ENV['HWVIRTEX'] || "on"
-VAGRANTRAM=ENV['VAGRANTRAM'] || "1024"
-VAGRANTCPUS=ENV['VAGRANTCPUS'] || 1
-PROJECT=ENV['ESPPROJECT'] || "./Espressif"
+VAGRANTRAM=ENV['VM_RAM'] || "1024"
+VAGRANTCPUS=ENV['VM_CPUS'] || 1
+PROJECT=ENV['ESP_PROJECT'] || "./Espressif"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # All Vagrant configuration is done here. The most common configuration
@@ -44,7 +45,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
-  config.vm.synced_folder PROJECT, "/opt/Espressif"
+  config.vm.synced_folder PROJECT, "/opt/Espressif/"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.

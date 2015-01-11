@@ -5,10 +5,10 @@ DOWNLOADS=/vagrant/downloads
 
 echo "bootstrapping"
 
-
-if [ -f /vagrant/options ]; then
+if [ -f /vagrant/project.conf ]; then
 	echo "reading options"
-	. /vagrant/options
+	chmod +x /vagrant/project.conf
+	. /vagrant/project.conf
 fi
 
 export BASE_FOLDER
